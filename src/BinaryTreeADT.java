@@ -4,22 +4,30 @@ public class BinaryTreeADT {
 
     BinaryTreeNode root;
 
-    public BinaryTreeNode getRoot(){
-        return root;
-    }
-
-    public void setRoot(BinaryTreeNode root){
+    public BinaryTreeADT(BinaryTreeNode root) {
         this.root = root;
     }
 
-    public boolean isEmpty(){
+    public BinaryTreeADT() {
+        this.root = null;
+    }
+
+    public BinaryTreeNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(BinaryTreeNode root) {
+        this.root = root;
+    }
+
+    public boolean isEmpty() {
         if (getRoot() == null)
-        return true;
+            return true;
         else return false;
     }
 
     public int size() {
-        return  size(root);
+        return size(root);
     }
 
     public int size(BinaryTreeNode node) {
@@ -29,8 +37,7 @@ public class BinaryTreeADT {
             return (size(node.getLeftChild()) + 1 + size(node.getRightChild()));
     }
 
-    public boolean contains(int element)
-    {
+    public boolean contains(int element) {
         if (getRoot() == null)
             return false;
         if (getRoot().getElement() == element || getRoot().getRightChild().getElement() == element || getRoot().getLeftChild().getElement() == element)
@@ -44,7 +51,6 @@ public class BinaryTreeADT {
         }
 
     }
-
 
 
     public ArrayList<Integer> inOrder() {
@@ -64,7 +70,7 @@ public class BinaryTreeADT {
         return null;
     }
 
-    public int height(){
+    public int height() {
         return 0;
     }
 }

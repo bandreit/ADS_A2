@@ -61,7 +61,7 @@ public class BinaryTreeADTTest {
     }
 
     @Test
-    void doesnotContainElement()
+    void doesNotContainElement()
     {
         assertFalse(binaryTree.contains(69));
     }
