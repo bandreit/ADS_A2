@@ -30,7 +30,7 @@ public class BinaryTreeADT {
         return size(root);
     }
 
-    public int size(BinaryTreeNode node) {
+    private int size(BinaryTreeNode node) {
         if (node == null)
             return 0;
         else
@@ -78,27 +78,88 @@ public class BinaryTreeADT {
 
 
     public ArrayList<Integer> inOrder() {
-        return null;
+        return inOrder(root);
+    }
+
+    private ArrayList<Integer> inOrder(BinaryTreeNode node){
+        ArrayList<Integer> tree = new ArrayList<>();
+
+        if (node == null)
+            return null;
+
+        inOrder(node.getLeftChild());
+        tree.add(node.getLeftChild().getElement());
+        inOrder(node.getRightChild());
+
+        return tree;
     }
 
     public ArrayList<Integer> preOrder() {
-        return null;
+        return preOrder(root);
+    }
+
+    private ArrayList<Integer> preOrder(BinaryTreeNode node) {
+        ArrayList<Integer> tree = new ArrayList<>();
+
+        if (node == null)
+            return null;
+
+        tree.add(node.getElement());
+        preOrder(node.getLeftChild());
+        preOrder(node.getRightChild());
+
+        return tree;
     }
 
     public ArrayList<Integer> postOrder() {
+        return postOrder(root);
+    }
 
-        return null;
+    private ArrayList<Integer> postOrder(BinaryTreeNode node) {
+        ArrayList<Integer> tree = new ArrayList<>();
+
+        if (node == null)
+            return null;
+
+        postOrder(node.getLeftChild());
+        postOrder(node.getRightChild());
+        tree.add(node.getElement());
+
+        return tree;
     }
 
     public ArrayList<Integer> levelOrder() {
-        return null;
+        return levelOrder(root);
+    }
+
+    private ArrayList<Integer> levelOrder(BinaryTreeNode node) {
+        ArrayList<Integer> ordered = new ArrayList<>();
+        int h = height();
+        for (int i = 1; i <= h; i++)
+           givenLevel(node, i, ordered);
+        return ordered;
+    }
+
+    private ArrayList<Integer> givenLevel(BinaryTreeNode root, int level, ArrayList<Integer> ordered){
+
+
+        if (root == null)
+            return null;
+        if (level == 1)
+            ordered.add(root.getElement());
+        else if (level > 1)
+        {
+            givenLevel(root.getLeftChild(), level-1, ordered);
+            givenLevel(root.getRightChild(), level-1, ordered);
+        }
+        return ordered;
     }
 
     public int height() {
         return height(root);
     }
 
-    public int height(BinaryTreeNode node){
+    private int height(BinaryTreeNode node){
         if (node == null)
             return -1;
         else
