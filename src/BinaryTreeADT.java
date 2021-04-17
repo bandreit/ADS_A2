@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class BinaryTreeADT {
 
-    BinaryTreeNode root;
+    private BinaryTreeNode root;
 
     public BinaryTreeADT(BinaryTreeNode root) {
         this.root = root;
