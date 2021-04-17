@@ -4,15 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinaryTreeNodeTest {
+class BinaryTreeADTNodeTest {
 
     private BinaryTreeNode treeNode;
-    private int value = 10;
 
     @BeforeEach
     void setUp() {
         System.out.println("Test starts");
-        treeNode = new BinaryTreeNode(value);
+        treeNode = new BinaryTreeNode(10);
     }
 
     @AfterEach
