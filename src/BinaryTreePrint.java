@@ -90,6 +90,4 @@ public class BinaryTreePrint {
             System.out.print(" ");
 
     }
-
-
 }
