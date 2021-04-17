@@ -84,45 +84,51 @@ public class BinaryTreeADT {
     private ArrayList<Integer> inOrder(BinaryTreeNode node){
         ArrayList<Integer> tree = new ArrayList<>();
 
-        if (node == null)
-            return null;
-
-        inOrder(node.getLeftChild());
-        tree.add(node.getLeftChild().getElement());
-        inOrder(node.getRightChild());
+        inOrderRecursive(node, tree);
 
         return tree;
+    }
+
+    private void inOrderRecursive(BinaryTreeNode node, ArrayList<Integer> tree) {
+        if (node == null)
+            return;
+
+        inOrderRecursive(node.getLeftChild(), tree);
+        tree.add(node.getElement());
+        inOrderRecursive(node.getRightChild(), tree);
     }
 
     public ArrayList<Integer> preOrder() {
-        return preOrder(root);
-    }
-
-    private ArrayList<Integer> preOrder(BinaryTreeNode node) {
         ArrayList<Integer> tree = new ArrayList<>();
-
-        if (node == null)
-            return null;
-
-        tree.add(node.getElement());
-        preOrder(node.getLeftChild());
-        preOrder(node.getRightChild());
+        preOrder(root, tree);
 
         return tree;
     }
 
-    public ArrayList<Integer> postOrder() {
-        return postOrder(root);
+    private void preOrder(BinaryTreeNode node,  ArrayList<Integer> tree ) {
+        if (node == null)
+            return;
+
+        tree.add(node.getElement());
+        preOrder(node.getLeftChild(), tree);
+        preOrder(node.getRightChild(), tree);
     }
 
-    private ArrayList<Integer> postOrder(BinaryTreeNode node) {
+    public ArrayList<Integer> postOrder() {
         ArrayList<Integer> tree = new ArrayList<>();
+        postOrder(root,tree);
+
+        return tree;
+    }
+
+    private ArrayList<Integer> postOrder(BinaryTreeNode node,  ArrayList<Integer> tree) {
+
 
         if (node == null)
             return null;
 
-        postOrder(node.getLeftChild());
-        postOrder(node.getRightChild());
+        postOrder(node.getLeftChild(), tree);
+        postOrder(node.getRightChild(), tree);
         tree.add(node.getElement());
 
         return tree;
@@ -134,7 +140,7 @@ public class BinaryTreeADT {
 
     private ArrayList<Integer> levelOrder(BinaryTreeNode node) {
         ArrayList<Integer> ordered = new ArrayList<>();
-        int h = height();
+        int h = height() + 1;
         for (int i = 1; i <= h; i++)
            givenLevel(node, i, ordered);
         return ordered;

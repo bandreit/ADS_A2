@@ -77,6 +77,13 @@ public class BinaryTreeADTTest {
     }
 
     @Test
+    void heightZeroLevel() {
+        BinaryTreeNode root = new BinaryTreeNode(0);
+        binaryTree.setRoot(root);
+        assertEquals(0, binaryTree.height());
+    }
+
+    @Test
     void heightOneLevel() {
         BinaryTreeNode root = new BinaryTreeNode(0);
         BinaryTreeNode child1 = new BinaryTreeNode(1);
