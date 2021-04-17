@@ -81,11 +81,10 @@ public class BinaryTreeADT {
         return inOrder(root);
     }
 
-    private ArrayList<Integer> inOrder(BinaryTreeNode node){
+    private ArrayList<Integer> inOrder(BinaryTreeNode node) {
         ArrayList<Integer> tree = new ArrayList<>();
 
         inOrderRecursive(node, tree);
-
         return tree;
     }
 
@@ -101,11 +100,10 @@ public class BinaryTreeADT {
     public ArrayList<Integer> preOrder() {
         ArrayList<Integer> tree = new ArrayList<>();
         preOrder(root, tree);
-
         return tree;
     }
 
-    private void preOrder(BinaryTreeNode node,  ArrayList<Integer> tree ) {
+    private void preOrder(BinaryTreeNode node, ArrayList<Integer> tree) {
         if (node == null)
             return;
 
@@ -116,22 +114,18 @@ public class BinaryTreeADT {
 
     public ArrayList<Integer> postOrder() {
         ArrayList<Integer> tree = new ArrayList<>();
-        postOrder(root,tree);
+        postOrder(root, tree);
 
         return tree;
     }
 
-    private ArrayList<Integer> postOrder(BinaryTreeNode node,  ArrayList<Integer> tree) {
-
-
+    private void postOrder(BinaryTreeNode node, ArrayList<Integer> tree) {
         if (node == null)
-            return null;
+            return;
 
         postOrder(node.getLeftChild(), tree);
         postOrder(node.getRightChild(), tree);
         tree.add(node.getElement());
-
-        return tree;
     }
 
     public ArrayList<Integer> levelOrder() {
@@ -142,21 +136,20 @@ public class BinaryTreeADT {
         ArrayList<Integer> ordered = new ArrayList<>();
         int h = height() + 1;
         for (int i = 1; i <= h; i++)
-           givenLevel(node, i, ordered);
+            givenLevel(node, i, ordered);
         return ordered;
     }
 
-    private ArrayList<Integer> givenLevel(BinaryTreeNode root, int level, ArrayList<Integer> ordered){
+    private ArrayList<Integer> givenLevel(BinaryTreeNode root, int level, ArrayList<Integer> ordered) {
 
 
         if (root == null)
             return null;
         if (level == 1)
             ordered.add(root.getElement());
-        else if (level > 1)
-        {
-            givenLevel(root.getLeftChild(), level-1, ordered);
-            givenLevel(root.getRightChild(), level-1, ordered);
+        else if (level > 1) {
+            givenLevel(root.getLeftChild(), level - 1, ordered);
+            givenLevel(root.getRightChild(), level - 1, ordered);
         }
         return ordered;
     }
@@ -165,11 +158,10 @@ public class BinaryTreeADT {
         return height(root);
     }
 
-    private int height(BinaryTreeNode node){
+    private int height(BinaryTreeNode node) {
         if (node == null)
             return -1;
-        else
-        {
+        else {
             int lDepth = height(node.getLeftChild());
             int rDepth = height(node.getRightChild());
             if (lDepth > rDepth)
