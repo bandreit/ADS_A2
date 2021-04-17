@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class BinaryTreeADT {
 
-    private BinaryTreeNode root;
+    BinaryTreeNode root;
 
     public BinaryTreeADT(BinaryTreeNode root) {
         this.root = root;
@@ -13,7 +13,7 @@ public class BinaryTreeADT {
     }
 
     public BinaryTreeNode getRoot() {
-        return null;
+        return root;
     }
 
     public void setRoot(BinaryTreeNode root) {
@@ -21,16 +21,61 @@ public class BinaryTreeADT {
     }
 
     public boolean isEmpty() {
-        return true;
+        if (getRoot() == null)
+            return true;
+        else return false;
     }
 
     public int size() {
-        return 0;
+        return size(root);
+    }
+
+    public int size(BinaryTreeNode node) {
+        if (node == null)
+            return 0;
+        else
+            return (size(node.getLeftChild()) + 1 + size(node.getRightChild()));
     }
 
     public boolean contains(int element) {
-        return false;
+        BinaryTreeNode current = getRoot();
+
+        if (current == null)
+            return false;
+
+        if (current.getElement() == element || current.getRightChild().getElement() == element || current.getLeftChild().getElement() == element)
+            return true;
+
+        else {
+
+            while (current.getElement() != element) {
+
+                if (current.getElement() < element && current.getRightChild() != null) {
+                    current = current.getRightChild();
+                    System.out.println(current.getElement());
+                }
+
+                if (current.getElement() > element && current.getLeftChild() != null) {
+                    current = current.getLeftChild();
+                    System.out.println(current.getElement());
+                }
+
+
+                if (current.getRightChild() != null && current.getRightChild().getElement() == element) {
+                    return true;
+                }
+                if (current.getLeftChild() != null && current.getLeftChild().getElement() == element) {
+                    return true;
+                }
+
+                if (current.getElement() != element && current.getRightChild() == null && current.getLeftChild() == null)
+                    return false;
+
+            }
+            return true;
+        }
     }
+
 
     public ArrayList<Integer> inOrder() {
         return null;
@@ -41,6 +86,7 @@ public class BinaryTreeADT {
     }
 
     public ArrayList<Integer> postOrder() {
+
         return null;
     }
 
@@ -49,6 +95,20 @@ public class BinaryTreeADT {
     }
 
     public int height() {
-        return 0;
+        return height(root);
+    }
+
+    public int height(BinaryTreeNode node){
+        if (node == null)
+            return -1;
+        else
+        {
+            int lDepth = height(node.getLeftChild());
+            int rDepth = height(node.getRightChild());
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
     }
 }

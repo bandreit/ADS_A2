@@ -51,6 +51,7 @@ public class BinaryTreeADTTest {
     void sizeOne() {
         BinaryTreeNode root = new BinaryTreeNode(0);
         root.addRightChild(child1);
+        binaryTree.setRoot(root);
         assertEquals(1, binaryTree.size());
     }
 
@@ -61,7 +62,7 @@ public class BinaryTreeADTTest {
     }
 
     @Test
-    void doesnotContainElement()
+    void doesNotContainElement()
     {
         assertFalse(binaryTree.contains(69));
     }
@@ -70,13 +71,13 @@ public class BinaryTreeADTTest {
     void doesContainElement()
     {
         initializeTestTree();
-        assertFalse(binaryTree.contains(1));
+        assertTrue(binaryTree.contains(1));
     }
 
     @Test
     void heightNoNodes()
     {
-        assertEquals(0, binaryTree.height());
+        assertEquals(-1, binaryTree.height());
     }
 
     @Test
@@ -85,6 +86,7 @@ public class BinaryTreeADTTest {
         BinaryTreeNode root = new BinaryTreeNode(0);
         BinaryTreeNode child1 = new BinaryTreeNode(1);
         root.addRightChild(child1);
+        binaryTree.setRoot(root);
         assertEquals(1, binaryTree.height());
     }
 
@@ -98,11 +100,12 @@ public class BinaryTreeADTTest {
         newChild1.addLeftChild(newChild2);
         newChild2.addRightChild(newChild3);
         root.addLeftChild(newChild1);
+        binaryTree.setRoot(root);
         assertEquals(3, binaryTree.height());
     }
 
     void initializeTestTree() {
-        BinaryTreeNode root = new BinaryTreeNode(0);
+        root = new BinaryTreeNode(0);
         BinaryTreeNode child1 = new BinaryTreeNode(1);
         BinaryTreeNode child2 = new BinaryTreeNode(2);
         BinaryTreeNode child3 = new BinaryTreeNode(3);
