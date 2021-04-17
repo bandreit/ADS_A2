@@ -38,18 +38,42 @@ public class BinaryTreeADT {
     }
 
     public boolean contains(int element) {
-        if (getRoot() == null)
+        BinaryTreeNode current = getRoot();
+
+        if (current == null)
             return false;
-        if (getRoot().getElement() == element || getRoot().getRightChild().getElement() == element || getRoot().getLeftChild().getElement() == element)
+
+        if (current.getElement() == element || current.getRightChild().getElement() == element || current.getLeftChild().getElement() == element)
             return true;
+
         else {
-            while (getRoot().getElement() != element) {
-                if (getRoot().getElement() < element && getRoot().getRightChild() != null) {
 
+            while (current.getElement() != element) {
+
+                if (current.getElement() < element && current.getRightChild() != null) {
+                    current = current.getRightChild();
+                    System.out.println(current.getElement());
                 }
-            }
-        }
 
+                if (current.getElement() > element && current.getLeftChild() != null) {
+                    current = current.getLeftChild();
+                    System.out.println(current.getElement());
+                }
+
+
+                if (current.getRightChild() != null && current.getRightChild().getElement() == element) {
+                    return true;
+                }
+                if (current.getLeftChild() != null && current.getLeftChild().getElement() == element) {
+                    return true;
+                }
+
+                if (current.getElement() != element && current.getRightChild() == null && current.getLeftChild() == null)
+                    return false;
+
+            }
+            return true;
+        }
     }
 
 
@@ -71,6 +95,20 @@ public class BinaryTreeADT {
     }
 
     public int height() {
-        return 0;
+        return height(root);
+    }
+
+    public int height(BinaryTreeNode node){
+        if (node == null)
+            return -1;
+        else
+        {
+            int lDepth = height(node.getLeftChild());
+            int rDepth = height(node.getRightChild());
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
     }
 }
