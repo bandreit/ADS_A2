@@ -6,25 +6,23 @@ public class BinaryTreeNode {
 
     public BinaryTreeNode(int nodeValue) {
         value = nodeValue;
+        leftChild = null;
+        rightChild = null;
     }
 
     public int getElement() {
         return value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
+    public void setElement(int value) {
         this.value = value;
     }
 
-    public void setLeftChild(BinaryTreeNode leftChild) {
+    public void addLeftChild(BinaryTreeNode leftChild) {
         this.leftChild = leftChild;
     }
 
-    public void setRightChild(BinaryTreeNode rightChild) {
+    public void addRightChild(BinaryTreeNode rightChild) {
         this.rightChild = rightChild;
     }
 
