@@ -1,4 +1,4 @@
-public class BinarySearchTree {
+public class BinarySearchTree extends BinaryTreeADT{
 
     private BinaryTreeNode root;
 

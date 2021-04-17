@@ -17,7 +17,23 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    void insert() {
+    void insertOne() {
+        binaryTree.insert(0);
+        assertEquals(1, binaryTree.size());
+    }
 
+    @Test
+    void insertZero() {
+        binaryTree.insert(0);
+        binaryTree.insert(0);
+        assertEquals(1, binaryTree.size());
+    }
+
+    @Test
+    void insertMany() {
+        binaryTree.insert(2);
+        binaryTree.insert(1);
+        binaryTree.insert(3);
+        assertEquals(3, binaryTree.size());
     }
 }
